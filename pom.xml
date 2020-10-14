@@ -33,7 +33,7 @@
 				</configuration>
 			</plugin>
 			<!-- https://jeremylong.github.io/DependencyCheck/dependency-check-maven/ -->
-			<plugin>
+			<!-- <plugin>
               <groupId>org.owasp</groupId>
               <artifactId>dependency-check-maven</artifactId>
               <version>5.2.1</version>
@@ -44,7 +44,7 @@
                       </goals>
                   </execution>
               </executions>
-            </plugin>
+            </plugin> -->
 			
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
@@ -87,6 +87,48 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			
+			<plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.4</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>jacoco-check</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+				<!--
+                                    <rule>
+                                        <limits>
+                                            <limit>
+                                                <minimum>0.9</minimum>
+                                            </limit>
+                                        </limits>
+                                    </rule>
+				-->
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+            	</plugin>
+		
+			
 		</plugins>
 		<finalName>insecure-bank</finalName>
 	</build>
