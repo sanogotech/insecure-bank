@@ -33,6 +33,7 @@ public class AccountDaoImpl implements AccountDao {
 		
 		log.info("   findUsersByUsernameAndPassword  ..");
 
+		//TODO Bug  SQL Injection
 		String str = "select * from account where username='" + username + "' AND password='" + password + "'";
 		
 		/*String str = "select * from account where username= ? AND password= ? ";
